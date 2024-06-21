@@ -1,0 +1,39 @@
+body {
+  background-color: #f2f3f5;
+}
+.product-box {
+  background-color: #fff;
+}
+.footer {
+  padding: 20px;
+}
+.fa-facebook-f {
+  background-color: #3b5998;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+.fa-twitter {
+  background-color: #1da1f2;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+.fa-linkedin-in {
+  background-color: #0077b5;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+.fa-pinterest-p {
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+.envelope {
+  background-color: #ea4335;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}

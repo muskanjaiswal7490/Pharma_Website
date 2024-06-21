@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shopping Cart</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- Script Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg" style="background-color: #50a6b6; padding: 0px;">
+            <div class="container-fluid">
+                <div class="row w-100">
+                    <div class="col-md-6 col-12 d-flex justify-content-start align-items-center">
+                        <ul class="navbar-nav d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"><i class="fa-regular fa-user"></i> Sign In / Sign Up</a>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="card mt-5">
+                                                    <div class="card-body">
+                                                        <h1 class="card-title text-center" style="font-size: 30px;"><b>Sign In</b></h1>
+                                                        <form action="/submit-signin" method="post">
+                                                            <div class="form-group">
+                                                                <label for="email">Username or email*</label>
+                                                                <input type="email" class="form-control" id="email" name="email" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="password">Password*</label>
+                                                                <input type="password" class="form-control" id="password" name="password" required>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-block" style="background-color: #50a6b6; color: #fff;">LOGIN</button>
+                                                        </form>
+                                                        <div class="text-center mt-3">
+                                                            <a href="signup.html">Don't have an account? Sign Up</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white wishlistItem" onclick="addWishlistItem(this.dataset.productId)" href="wishlist-page.html">
+                                    <i class="fa-regular fa-heart"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="card-page.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-12 text-end d-none d-md-block">
+                        <a class="text-white" style="text-decoration: none;" href="mailto:support@example.com"><i class="fa-regular fa-envelope"></i> support@example.com |</a>
+                        <a class="text-white" style="text-decoration: none;" href="tel:+84665678899"><i class="fa-solid fa-phone"></i> +84 66 - 567 - 8899</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col-6 col-md-2">
+                    <a class="navbar-brand" href="#">
+                        <img src="image/Logo-1.svg" alt="Medilazar">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="col-md-6">
+                        <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-md-4" href="index.html"><b>Home</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-md-4" href="shop.html"><b>Shop</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-md-4" href="blog.html"><b>Blog</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-md-4" href="Contact.html"><b>Contact</b></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="d-flex">
+                            <select class="form-select me-2" aria-label="Category">
+                                <option selected>All category</option>
+                                <option value="1">Category 1</option>
+                                <option value="2">Category 2</option>
+                                <option value="3">Category 3</option>
+                            </select>
+                            <div class="input-group">
+                                <input class="form-control" type="search" placeholder="Search.." aria-label="Search">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!--Checkout Section -->
+    <section>
+        <div class="container space">
+            <h2><b>Checkout</b></h2>
+            <div class="row pt-5">
+                <h5><b>Billing details</b></h5>
+                <div class="col-md-6 pt-3">
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Company name (optional)</label>
+                            <input type="text" id="Companyname" name="Companyname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country / Region *</label>
+                            <select id="country" name="country" required>
+                                <option value="United States">United States</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Street address *</label>
+                            <input type="text" id="address" name="address" placeholder="House number and street name"
+                                required></br>
+                            <input type="text" id="address2" name="address"
+                                placeholder="Apartment, suite, unit, etc. (optional)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="City">Town / City *</label>
+                            <input type="text" id="City" name="City" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State / County *</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Postcode / ZIP *</label>
+                            <input type="text" id="zip" name="zip" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Phone">Phone *</label>
+                            <input type="text" id="Phone" name="Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email address *</label>
+                            <input type="text" id="Email" name="Email" required>
+                        </div>
+
+                    </form>
+                    <div class="pt-4">
+                        <h5><b>Additional information</b></h5>
+                        <label for="Order-notes">Order notes (optional)</label>
+                        <textarea name="note" id="note" cols="56" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6 pt-3">
+                    <div class="form-group">
+                        <h5><b>Your Order</b></h5>
+                        <table id="order-summary" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div>
+                            <p>Your personal data will be used to process your order, support your experience throughout
+                                this website, and for other purposes described in our <span><a href="">privacy
+                                        policy.</a></span></p>
+                            <button type="button" class="btn" onclick="placeOrder()">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up For Newsletter Section -->
+    <section style="background-color: #f2f3f5;">
+        <div class="container space">
+            <div class="row space text-center">
+                <div class="col-md-12">
+                    <h3><b>Sign Up For Newsletter</b></h3>
+                    <p>Join 60.000+ Subscribers and get a new discount coupon on every Saturday.</p>
+                    <input type="text" class="email-btn" placeholder="Enter E-mail">
+                    <button class=" btn2">Subscribe<i style="color: #fff; font-size: medium;"
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section>
+        <div class="container space">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-auto">
+                            <i class="fa-solid fa-box icons"></i>
+                        </div>
+                        <div class="col">
+                            <h5>Free Easy Returns</h5>
+                            <p>Return to 7 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-auto">
+                            <i class="fa-solid fa-truck-fast icons"></i>
+                        </div>
+                        <div class="col">
+                            <h5>Free Delivery Monday</h5>
+                            <p>Orders over $499</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-auto">
+                            <i class="fa-solid fa-headphones-simple icons"></i>
+                        </div>
+                        <div class="col">
+                            <h5>All Day Support</h5>
+                            <p>24/7 Support care</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-auto">
+                            <i class="fa-solid fa-shield-halved icons"></i>
+                        </div>
+                        <div class="col">
+                            <h5>Secure Checkout</h5>
+                            <p>100% Protected by paypa</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="row pt-5">
+                <div class="col-sm-6 col-md-2">
+                    <img style="height: auto; width: 200px;" src="image/Logo-1.svg" alt="Alphawizz">
+                    <p class="pt-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum neque aperiam
+                        voluptatem eum qui!</p>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <h5><b>INFORMATION</b></h5>
+                    <ul class="list-unstyled">
+                        <li style="padding: 5px;">Newsroom</li>
+                        <li style="padding: 5px;">Sell Your Pharmacy</li>
+                        <li style="padding: 5px;">Affiliate Program</li>
+                        <li style="padding: 5px;">Investor Relations</li>
+                        <li style="padding: 5px;">Investor Relations</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <h5><b>CATEGORIES</b></h5>
+                    <ul class="list-unstyled">
+                        <li style="padding: 5px;">Devices</li>
+                        <li style="padding: 5px;">Family Care</li>
+                        <li style="padding: 5px;">Fitness</li>
+                        <li style="padding: 5px;">Lifestyle</li>
+                        <li style="padding: 5px;">Personal care</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <h5><b>OUR SERVICES</b></h5>
+                    <ul class="list-unstyled">
+                        <li style="padding: 5px;">Shipping</li>
+                        <li style="padding: 5px;">Returns</li>
+                        <li style="padding: 5px;">Contact Us</li>
+                        <li style="padding: 5px;">Site Map</li>
+                        <li style="padding: 5px;">Product Recalls</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h5><b>Contact</b></h5>
+                    <P>56 Glassford Street Glassgow G1 1UL, New York, USA</P>
+                    <ul class="list-unstyled">
+                        <li style="padding: 5px;"><i class="fa-solid fa-phone"></i> +351 910 331 000</li>
+                        <li style="padding: 5px;"><i class="fa-regular fa-envelope"></i> contact@example.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <section>
+        <div class="footer">
+            <div class="container">
+                <hr>
+                <div class="row p-3">
+                    <div class="col-sm-9 col-md-6">Copyright ©2020 <span style="color: #2ea5b6;">Medilazar</span>. All
+                        Rights Reserved.</div>
+                    <div class="col-sm-9 col-md-6">
+                        <img class="float-end" src="image/Footer-Bitmap.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderSummary = $('#order-summary');
+            const orderData = {
+                items: [],
+                total: 0
+            };
+
+
+            cart.forEach(item => {
+                orderData.items.push({ name: item.title, price: item.price });
+                orderData.total += parseFloat(item.price);
+            });
+
+
+            cart.forEach(item => {
+                orderSummary.append(`
+                    <tr>
+                        <td><b>${item.title}</b></td>
+                        <td><b>$${item.price}</b></td>
+                    </tr>
+                `);
+            });
+            orderSummary.append(`
+                <tr>
+                    <td><b>Total</b></td>
+                    <td><b>$${orderData.total.toFixed(2)}</b></td>
+                </tr>
+            `);
+        });
+
+        async function placeOrder() {
+            const { jsPDF } = window.jspdf;
+            const orderData = {
+
+                items: [],
+                total: 0
+            };
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.forEach(item => {
+                orderData.items.push({ name: item.title, price: item.price });
+                orderData.total += parseFloat(item.price);
+            });
+            const doc = new jsPDF();
+            let yPosition = 30;
+            orderData.items.forEach(item => {
+                doc.text(`${item.name} - $${item.price}`, 10, yPosition);
+                yPosition += 10;
+            });
+            doc.text(`Total: $${orderData.total.toFixed(2)}`, 10, yPosition + 10);
+            doc.save('invoice.pdf');
+        }
+    </script>
+
+</body>
+
+</html>

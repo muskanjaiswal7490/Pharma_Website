@@ -1,0 +1,46 @@
+.banner {
+  background: url(../image/Contact.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+}
+
+input {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #e6e6e6;
+}
+
+textarea {
+  width: 100%;
+  border: 2px solid #e6e6e6;
+}
+.contact-btn {
+  background-color: #1c8687;
+  border-color: #1c8687;
+  color: #fff;
+  border: none;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 40px;
+}
+.contact-icons {
+  font-size: 40px;
+  color: #1c8687;
+}
+.image{
+  height: auto;
+  width: 180%;
+}
+@media (max-width: 568px) {
+  .image{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .image{
+   display: none;
+  }
+}
